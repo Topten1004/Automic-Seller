@@ -1,0 +1,52 @@
+﻿@model List<AtomicService>
+@{
+    ViewData["Title"] = "Catalog";
+}
+<div class="row">
+     <div class="col-6 d-flex justify-content-start product-page">
+       <h5>Manage Catalog</h5>
+    </div>
+    <div class="col-6 d-flex justify-content-end product-page">
+        <input class="form-control me-2 search-product" type="search" placeholder="Search" aria-label="Search" style="width:auto;">
+        <a class="btn btn-primary add-product"><i class="fa fa-plus-square text-white"></i></a>
+    </div>
+</div>
+<hr class="mx-2"/>
+<div class="row product-page">
+    <div class="card card-solid">
+        <div class="card-body p-1">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th class="d-table-cell d-sm-none d-md-none d-lg-none">Name</th>
+                        <th class="d-none d-sm-table-cell">Name</th>
+                        <th class="d-none d-sm-table-cell">Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="product-list">
+                    @foreach (var item in Model)
+                    {
+                        @await Html.PartialAsync("_Row", item)
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    @await Html.PartialAsync("_ModalEdit", new ModalEditViewModel()
+    {
+    Id = "modal-product",
+    Title = "Edit Product",
+    LoaderId = "progress-edit-product",
+    FormAction = "Edit",
+    FormController = "Product",
+    FormArea = "",
+    FormDataAjaxFailure = "product.OnEditFailure",
+    FormDataAjaxSuccess = "product.OnEditSuccess"
+    })
+
+</div>
+@section Scripts{
+    <script src="~/js/pages/admin/product.js"></script>
+}

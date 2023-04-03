@@ -1,0 +1,88 @@
+﻿@model AtomicServiceViewModel
+@{
+    ViewData["Title"] = @Model.AtomicService.ServiceName;
+}
+
+<div class="row mb-5 m-auto" style="width: 60vw;">
+    <div class="out-border d-flex flex-column">
+        <!-- Service Name -->
+        <h5 class="fw-bolder mt-4 mb-2" style="color: #416ba0; align-self: center;">@Model.AtomicService.ServiceName</h5>
+
+        <!-- Service Features -->
+        <p class="mb-1 ms-3">&check;  Feature 1</p>
+        <p class="mb-1 ms-3">&check;  Feature 2</p>
+        <p class="mb-1 ms-3">&check;  Feature 3</p>
+        <p class="mb-1 ms-3">&check;  Feature 4</p>
+        <p class="mb-3 ms-3">&check;  Feature 5</p>
+
+        <!-- Monthly or Annually Billed -->
+        <div class="form-check align-items-start pe-3">
+            <input class="form-check-input me-4 ms-2" type="radio" name="billingCheckBox" id="monthlyBillCheck" checked>
+            <label class="form-check-label fw-bold" for="monthlyBillCheck">Billed Monthly : $@Model.AtomicService.MonthUnitPriceExclTax</label>
+        </div>
+        <div class="form-check align-items-start pe-3 mb-4">
+            <input class="form-check-input me-4 ms-2" type="radio" name="billingCheckBox" id="annuallyBillCheck">
+            <label class="form-check-label fw-bold" for="annuallyBillCheck">Billed Annually : $@Model.AtomicService.AnnualUnitPriceExclTax</label>
+        </div>
+    </div>
+</div>
+
+<div class="row m-auto mb-5" style="width: 60vw;">
+    <div class="out-border d-flex flex-column">
+        <!-- Choose Add on -->
+        <h5 class="fw-bolder mt-4 mb-3" style="color: #416ba0; align-self: center;">Choose Add ons</h5>
+
+        @{
+            var cnt = 0;
+        }
+        @foreach (var Addon in Model.AddOns)
+        {
+            cnt++;
+            <div class="form-check align-items-start pe-3 mb-2">
+                <input class="form-check-input col-2 me-4 ms-2" type="checkbox" value="@Addon.Id" id="addonChkBox@(cnt)" />
+                <label class="form-check-label col-8" for="addonChkBox@(cnt)">&check; @Addon.ServiceName &emsp; </label>
+                <label class="form-check-label col-2" for="addonChkBox@(cnt)">$@Addon.AnnualUnitPriceExclTax</label>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row m-auto d-flex justify-content-center" style="width: 60vw;">
+    <button type="button" class="btn btn-primary col-5 me-2" onclick="location.href='@Url.Action("Index", "Home")'">Cancel and return to plans list</button>
+    <button type="button" class="btn btn-success col-5 ms-2" onclick="addToCart();">Validate and go to Payment</button>
+</div>
+
+<script>
+    function addToCart() {
+        var idList = new Array();
+        idList[0] = @Model.AtomicService.Id;
+
+        if(document.getElementById("monthlyBillCheck").checked) {
+            idList[1] = 0;
+        } else {
+            idList[1] = 1;
+        }
+
+        var cnt = @Model.AddOns.Count();
+        var idx = 2;
+        for(let i = 1; i <= cnt; i++) {
+            if(document.getElementById("addonChkBox" + i).checked) {
+                idList[idx] = Number(document.getElementById("addonChkBox" + i).value);
+                idx = idx + 1;
+            }
+        }
+
+        $.ajax({
+            url: '@Url.Action("BuyItems", "Cart")',
+            type: 'POST',
+            data: {ids : idList},
+            success: function(success) {
+                if(success) {
+                    window.location.href = '@Url.Action("Index", "Cart")';
+                } else { 
+                    console.log("Failed");
+                }
+            }
+        });
+    }
+</script>

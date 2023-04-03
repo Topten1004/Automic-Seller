@@ -1,0 +1,53 @@
+﻿@model ApplicationUser
+@{
+    string[] countries = ViewBag.Countries;
+}
+<div class="row mb-3">
+    <div class="col">
+        <label asp-for="FirstName" class="form-label required"></label>
+        <input asp-for="FirstName" class="form-control" required />
+    </div>
+    <div class="col">
+        <label asp-for="LastName" class="form-label required"></label>
+        <input asp-for="LastName" class="form-control" required />
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col">
+        <label asp-for="Company" class="form-label">Company name (optional)</label>
+        <input asp-for="Company" class="form-control" />
+    </div>
+    <div class="col">
+        <label asp-for="Country" class="form-label required">Country / Region</label>
+        <select asp-for="Country" asp-items="@(new SelectList( countries))" class="form-select" required>
+            <option></option>
+        </select>
+    </div>
+</div>
+<div class="row mb-1">
+    <div class="col">
+        <label asp-for="StreetAddress1" class="form-label required">Street address</label>
+        <input asp-for="StreetAddress1" placeholder="House number and street name" class="form-control" required />
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col">
+        <input asp-for="StreetAddress2" placeholder="Apartment, suite, unit, etc. (optional)" class="form-control" />
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col">
+        <label asp-for="PostCodeZip" class="form-label required">Postcode / ZIP</label>
+        <input asp-for="PostCodeZip" class="form-control" required />
+    </div>
+    <div class="col">
+        <label asp-for="City" class="form-label required">Town / City</label>
+        <input asp-for="City" class="form-control" required />
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col">
+        <label asp-for="PhoneNumber" class="form-label">Phone (optional)</label>
+        <input asp-for="PhoneNumber" class="form-control" />
+    </div>
+</div>

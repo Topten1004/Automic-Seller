@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Order</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            text-indent: 0;
+        }
+
+        .s1 {
+            color: #4E525C;
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 28pt;
+        }
+
+        .s2 {
+            color: #404040;
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 12pt;
+        }
+
+        .s3 {
+            color: #404040;
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 10pt;
+        }
+
+        .s4 {
+            color: #404040;
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 10pt;
+        }
+
+        .s5 {
+            color: #999;
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 9pt;
+        }
+
+        .s6 {
+            color: black;
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 10pt;
+        }
+
+        .s7 {
+            color: black;
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 10.5pt;
+        }
+
+        .s8 {
+            color: #4E525C;
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 10pt;
+        }
+
+        .s9 {
+            color: #FFF;
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 9pt;
+        }
+
+        .s10 {
+            color: #404040;
+            font-family: Arial, sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: none;
+            font-size: 22pt;
+        }
+
+        table, tbody {
+            vertical-align: top;
+            overflow: visible;
+        }
+    </style>
+</head>
+<body>
+    <table style="border-collapse:collapse;margin-left:7.22pt" cellspacing="0">
+        <tr style="height:70pt;vertical-align:middle;">
+            <td style="width:285pt"><p class="s1" style="padding-left: 2pt;text-indent: 0pt;text-align: left;">Invoice</p></td>
+            <td style="width: 272pt;text-align: -webkit-center;">
+                <p style="text-indent: 0pt;text-align: left;"><br /></p><p style="padding-left: 98pt;text-indent: 0pt;text-align: left;">
+                    <span>
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <tr><td><img width="225" height="52" src="~/images/LogoAtomicV3.jpg" /></td></tr>
+                        </table>
+                    </span>
+                </p>
+            </td>
+        </tr>
+        <tr style="height:77pt">
+            <td style="width:285pt">
+                <div class="s2" style="padding-top: 9pt;padding-left: 2pt;text-indent: 0pt;text-align: left;">@CompanyName</div><br />
+                <div class="s3" style="padding-top: 2pt;padding-left: 2pt;text-indent: 0pt;text-align: left;">@CompanyAddress1</div>
+                <div class="s3" style="padding-top: 2pt;padding-left: 2pt;padding-right: 87pt;text-indent: 0pt;line-height: 120%;text-align: left;">@CompanyAddress2</div>
+                <div class="s3" style="padding-top: 2pt;padding-left: 2pt;padding-right: 87pt;text-indent: 0pt;line-height: 120%;text-align: left;">@CompanyCity, @CompanyCountry</div>
+            </td>
+            <td style="width:285pt">
+                <p style="padding-top: 9pt;padding-left: 95pt;text-indent: 0pt;line-height: 120%;text-align: left;"><a href="mailto:@Email" class="s4" target="_blank">Email: @Email</a><br /><a href="@Website" class="s4" target="_blank"> Web Site: @Website</a></p>
+            </td>
+        </tr>
+        <tr style="height:91pt">
+            <td style="width:285pt">
+                <p style="text-indent: 0pt;text-align: left;"><br /></p><p class="s5" style="padding-left: 2pt;text-indent: 0pt;text-align: left;">BILLED TO</p>
+                <p class="s6" style="padding-top: 2pt;padding-left: 2pt;padding-right: 87pt;text-indent: 0pt;line-height: 120%;text-align: left;">@CustomerName</p>
+                <p class="s6" style="padding-top: 2pt;padding-left: 2pt;text-indent: 0pt;line-height: 11pt;text-align: left;">@CustomerAddress1</p>
+                <p class="s6" style="padding-top: 2pt;padding-left: 2pt;text-indent: 0pt;line-height: 11pt;text-align: left;">@CustomerTownCity @CustomerPostCodeZip, @CustomerCountry </p>
+                <p class="s6" style="padding-top: 2pt;padding-left: 2pt;text-indent: 0pt;line-height: 11pt;text-align: left;">@CustomerPhoneNumber </p>
+            </td>
+            <td style="width:272pt"><p style="text-indent: 0pt;text-align: left;"><br /></p><p class="s5" style="padding-left: 95pt;text-indent: 0pt;text-align: left;">INVOICE NUMBER</p><p class="s7" style="padding-top: 3pt;padding-left: 95pt;text-indent: 0pt;text-align: left;">@InvoiceNumber</p><p style="text-indent: 0pt;text-align: left;"><br /></p><p class="s5" style="padding-left: 95pt;text-indent: 0pt;text-align: left;">DATE OF ISSUE</p><p class="s8" style="padding-top: 3pt;padding-left: 95pt;text-indent: 0pt;text-align: left;">@IssueDate</p></td>
+        </tr>
+    </table><p style="text-indent: 0pt;text-align: left;"><br /></p>
+            <table style="border-collapse:collapse;margin-left:5.28998pt" cellspacing="0">
+
+                <tr style="height:18pt">
+                    <td style="width:316pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#0D83DD"><p class="s9" style="padding-top: 3pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">DESCRIPTION</p></td>
+                    <td style="width:63pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#0D83DD"><p class="s9" style="padding-top: 3pt;padding-left: 6pt;padding-right: 5pt;text-indent: 0pt;text-align: center;">UNIT COST</p></td>
+                    <td style="width:78pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#0D83DD"><p class="s9" style="padding-top: 3pt;padding-left: 28pt;padding-right: 28pt;text-indent: 0pt;text-align: center;">QTY</p></td>
+                    <td style="width:107pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#0D83DD"><p class="s9" style="padding-top: 3pt;padding-left: 32pt;padding-right: 32pt;text-indent: 0pt;text-align: center;">AMOUNT</p></td>
+                </tr>
+                @ProductTR
+                <tr style="height:22pt">
+                    <td colspan="2" style="width:316pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-right-style:solid;border-right-width:1pt"><p style="text-indent: 0pt;text-align: left;"><br /></p></td>
+                    <td style="width:78pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s5" style="padding-top: 5pt;padding-right: 4pt;text-indent: 0pt;text-align: right;">SUBTOTAL</p></td>
+                    <td style="width:107pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s3" style="padding-top: 4pt;padding-left: 32pt;padding-right: 32pt;text-indent: 0pt;text-align: center;">$ @SubTotal</p></td>
+                </tr>
+                <tr style="height:22pt">
+                    <td colspan="2" style="width:316pt;border-left-style:solid;border-left-width:1pt;border-right-style:solid;border-right-width:1pt"><p style="text-indent: 0pt;text-align: left;"><br /></p></td>
+                    <td style="width:78pt;border-left-style:solid;border-left-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s5" style="padding-top: 5pt;padding-right: 4pt;text-indent: 0pt;text-align: right;">DISCOUNT</p></td>
+                    <td style="width:107pt;border-left-style:solid;border-left-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s3" style="padding-top: 4pt;padding-left: 32pt;padding-right: 32pt;text-indent: 0pt;text-align: center;">$ @Discount</p></td>
+                </tr>
+                <tr style="height:22pt">
+                    <td colspan="2" style="width:316pt;border-left-style:solid;border-left-width:1pt;border-right-style:solid;border-right-width:1pt"><p style="text-indent: 0pt;text-align: left;"><br /></p></td>
+                    <td style="width:78pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s5" style="padding-top: 5pt;padding-right: 4pt;text-indent: 0pt;text-align: right;">(TAX RATE)</p></td>
+                    <td style="width:107pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s3" style="padding-top: 4pt;padding-left: 32pt;padding-right: 32pt;text-indent: 0pt;text-align: center;">@TaxRate%</p></td>
+                </tr>
+                <tr style="height:22pt">
+                    <td colspan="2" style="width:316pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p style="text-indent: 0pt;text-align: left;"><br /></p></td>
+                    <td style="width:78pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s5" style="padding-top: 5pt;padding-right: 4pt;text-indent: 0pt;text-align: right;">TAX</p></td>
+                    <td style="width:107pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p class="s3" style="padding-top: 4pt;padding-left: 32pt;padding-right: 32pt;text-indent: 0pt;text-align: center;">$ @Tax</p></td>
+                </tr>
+                <tr style="height:57pt">
+                    <td colspan="2" style="width:316pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt"><p style="text-indent: 0pt;text-align: left;"><br /></p><p class="s5" style="padding-left: 4pt;text-indent: 0pt;text-align: left;">TERMS – Payment by Credit Card</p></td>
+                    <td style="width:185pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2"><p class="s5" style="padding-top: 4pt;padding-left: 57pt;text-indent: 0pt;text-align: left;">INVOICE TOTAL</p><p class="s10" style="padding-top: 3pt;padding-left: 55pt;text-indent: 0pt;text-align: left;">$ @InvoiceTotal</p></td>
+                </tr>
+            </table>
+</body>
+</html>

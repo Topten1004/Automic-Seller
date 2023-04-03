@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Stripe Shopping</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/lib/icheck-bootstrap/icheck-bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/toastr/build/toastr.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- <link rel="stylesheet" href="~/Sales.AtomicSeller.styles.css" asp-append-version="true" /> -->
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img height="24" src="~/images/IconAtomic_32x32.png" />
+                    AtomicSeller
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between fw-bold">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Store</a>
+                        </li>
+                    @*
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Catalog</a>
+                        </li>
+                    *@
+                    </ul>
+                    <partial name="_LoginPartial" />
+                    <partial name="_LangPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container" style="min-height: calc(100vh - 104px); display: flex; align-items: center;">
+        <main role="main" class="pb-3 m-auto" style="width: 100%;">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - StripeShopping - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootbox/dist/bootbox.min.js"></script>
+    <script src="~/lib/toastr/build/toastr.min.js"></script>
+    <script src="~/js/helpers/ajaxhelper.js"></script>
+    <script src="~/js/helpers/config.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

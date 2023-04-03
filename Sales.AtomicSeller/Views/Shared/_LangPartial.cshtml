@@ -1,0 +1,108 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Sales.AtomicSeller.Helpers
+@using System.Globalization
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<link rel="stylesheet" href="@Url.Content("/Resources/3d/css/flag-icon.min.css")">
+
+@*
+<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+D:\Projects\AtomicSeller\Tech\_Prod\sales.atomicseller.com\Dev\Sales.AtomicSeller\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+<script type="text/javascript" src="/Resources/3d/bootstrap.min.js"></script>
+*@
+
+
+<ul class="navbar-nav pull-right">
+    <li class="nav-item">
+
+        <div class="dropdown" data-placement="left">
+            @* title="@{new Local().TranslatedMessage("MESNULChangeLanguage");}">*@
+            <a href="#" class="nav-link action" data-bs-toggle="dropdown">
+                @{
+                    var flag = "";
+                    //System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("he-IL");
+
+                    var currentLang = "";
+                    if (Context.Request.Cookies["_culture"] != null)
+                    {
+                        currentLang = Context.Request.Cookies["_culture"];
+                        Thread.CurrentThread.CurrentCulture = new CultureInfo(currentLang);
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo(currentLang);
+                    }
+
+                    switch (Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName)
+                    {
+                        case "en":
+                            flag = "flag-icon-gb";
+                            break;
+                        case "fr":
+                            flag = "flag-icon-fr";
+                            break;
+                        case "zh":
+                            flag = "flag-icon-cn";
+                            break;
+                        case "de":
+                            flag = "flag-icon-de";
+                            break;
+                        case "it":
+                            flag = "flag-icon-it";
+                            break;
+                        case "es":
+                            flag = "flag-icon-es";
+                            break;
+                        case "pt":
+                            flag = "flag-icon-pt";
+                            break;
+                        case "nl":
+                            flag = "flag-icon-nl";
+                            break;
+                        case "ja":
+                            flag = "flag-icon-jp";
+                            break;
+                        case "ru":
+                            flag = "flag-icon-ru";
+                            break;
+                        case "hi":
+                            flag = "flag-icon-in";
+                            break;
+                        case "pl":
+                            flag = "flag-icon-pl";
+                            break;
+                        case "id":
+                            flag = "flag-icon-id";
+                            break;
+                        case "ar":
+                            flag = "flag-icon-eg";
+                            break;
+                        case "he":
+                            flag = "flag-icon-il";
+                            break;
+                    }
+                }
+                <i class="flag-icon @flag"></i>
+            </a>
+
+            <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "fr" })"><i class="flag-icon flag-icon-fr"></i> Français</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "en" })"><i class="flag-icon flag-icon-gb"></i> English</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "zh-CN" })"><i class="flag-icon flag-icon-cn"></i> 中文</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "de" })"><i class="flag-icon flag-icon-de"></i> Deutsch</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "it" })"><i class="flag-icon flag-icon-it"></i> Italiano</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "es" })"><i class="flag-icon flag-icon-es"></i> Español</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "pt" })"><i class="flag-icon flag-icon-pt"></i> Português</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "nl" })"><i class="flag-icon flag-icon-nl"></i> Nederlands</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "ja" })"><i class="flag-icon flag-icon-jp"></i> 日本語</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "ru" })"><i class="flag-icon flag-icon-ru"></i> Pусский</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "hi" })"><i class="flag-icon flag-icon-in"></i> हिन्दी</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "pl" })"><i class="flag-icon flag-icon-pl"></i> Polski</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "id" })"><i class="flag-icon flag-icon-id"></i> Indonesia</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "ar" })"><i class="flag-icon flag-icon-eg"></i> عربى</a></li>
+                <li class="dropdown-item"><a href="@Url.Action("SetCulture", "Home", new { culture = "he" })"><i class="flag-icon flag-icon-il"></i> עִברִית</a></li>
+            </ul>
+        </div>
+        
+    </li>
+
+</ul>

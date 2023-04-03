@@ -1,0 +1,28 @@
+﻿@model AtomicService
+<input type="hidden" asp-for="Id" />
+<div class="row mb-3">
+    <label asp-for="ServiceName" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input type="text" asp-for="ServiceName" class="form-control" autocomplete="off" required>
+    </div>
+</div>
+<div class="row mb-3">
+    <label asp-for="ServiceDescription" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <textarea asp-for="ServiceDescription" class="form-control" required></textarea>
+    </div>
+</div>
+<div class="row mb-3">
+    <label asp-for="UnitPriceExclTax" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input type="text" asp-for="UnitPriceExclTax" class="form-control" autocomplete="off" required>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="icheck-primary d-inline col-sm-9 offset-sm-3">
+        <input asp-for="Visible" type="checkbox" id="Visible" value="true">
+        <label for="Visible">
+            Visible
+        </label>
+    </div>
+</div>

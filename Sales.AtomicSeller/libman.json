@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "defaultProvider": "jsdelivr",
+  "libraries": [
+    {
+      "library": "jquery-ajax-unobtrusive@3.2.6",
+      "destination": "wwwroot/lib/jquery-ajax-unobtrusive/"
+    },
+    {
+      "library": "bootstrap@5.2.1",
+      "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "library": "jquery@3.6.1",
+      "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery-validation-unobtrusive@4.0.0",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery-validate@1.19.5",
+      "destination": "wwwroot/lib/jquery-validation/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "font-awesome@6.2.0",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "icheck-bootstrap@3.0.1",
+      "destination": "wwwroot/lib/icheck-bootstrap/",
+      "files": [
+        "icheck-bootstrap.min.css",
+        "icheck-bootstrap.css"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "bootbox@5.5.3",
+      "destination": "wwwroot/lib/bootbox/",
+      "files": [
+        "dist/bootbox.all.min.js",
+        "dist/bootbox.locales.min.js",
+        "dist/bootbox.min.js"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "toastr@2.1.4",
+      "destination": "wwwroot/lib/toastr/",
+      "files": [
+        "build/toastr.css",
+        "build/toastr.js.map",
+        "build/toastr.min.css",
+        "build/toastr.min.js"
+      ]
+    },
+  ]
+}

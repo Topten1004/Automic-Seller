@@ -1,0 +1,108 @@
+﻿@model Cart
+@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager;
+@inject IRootConfig rootConfig
+@{
+    ViewData["Title"] = "Shopping Cart Checkout";
+    ViewData["Description"] = "Shopping Cart Checkout";
+
+    var user = await userManager.GetUserAsync(User);
+    string error = ViewBag.Error;
+}
+@section Styles{
+    <style>
+        .orderbox {
+            background-color: whitesmoke;
+            border: 1px solid #dddddd;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .required::after {
+            content: " *";
+            color: red;
+            position: relative;
+            font-size: 12pt;
+        }
+    </style>
+}
+    <div class="container-full cart-page" style="background-color:white;color:black;">
+        <br />
+        <div id="checkout-zone">
+            @if (Model == null || Model.CartItems == null || Model.CartItems.Count == 0)
+        {
+            <div id="ShoppingCartEmpty" runat="server" style="text-align:center">
+                <div style="color:royalblue;font-size:60px;line-height:60px;">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fas fa-cart-arrow-down fa-stack-1x fa-inverse"></i>
+                    </span>
+                </div>
+                <div style="color:royalblue;font-size:30px;">Unfortunately, Your Shopping Cart is Empty</div>
+                <br />
+                Please add something in your cart
+                <br /><br />
+                <a href="/" style="text-decoration:underline">Get back to our homepage</a>
+            </div>
+        }
+        else
+        {
+            <div class="container-full" style="background-color:white;color:black;">
+                <div id="MainContent_ShoppingCart" class="container">
+                    <div class="row align-items-center bg-light" style="height:100px">
+                        <h2 class="blue text-center m-0 bc">Checkout</h2>
+                    </div>
+                    <form method="post" style="font-size:initial;">
+
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row ps-2 bg-light align-items-center" style="height:75px;">
+                                    <strong class="">Billing details</strong>
+                                </div>
+                                <br>
+                                @if (!string.IsNullOrWhiteSpace(error))
+                                {
+                                    <div class="alert alert-danger">
+                                        <i class="fa fa-warning"></i> @error
+                                    </div>
+                                }
+                                <div class="px-2">
+                                    @await Html.PartialAsync("_UserInfo", user)
+
+                                </div>
+                            </div>
+                            <div class="col-md-3 shadow p-3 mb-5 bg-body rounded text-center">
+                                <b>Order Summary:</b>
+                                <br><br>
+                                <div>
+                                    <div style="float:left">Items (<span id="BasketCount">@Model.CartItems.Count()</span>):</div>
+                                    <div style="float:right"><span id="MainContent_lblSubTotal">$@Model.Total</span></div>
+                                </div>
+                                <br><br>
+                                @{
+                                    decimal tax = Math.Round((Model.Total * rootConfig.InvoiceConfig.TaxRate) / 100, 2);
+                                    decimal totalTTC = Math.Round(Model.Total + tax, 2);
+                                }
+                                <div>
+                                    <div style="float:left">Taxes (10%):</div>
+                                    <div style="float:right"><span id="MainContent_lblTaxes">$@tax</span></div>
+                                </div>
+                                <br>
+                                <hr>
+                                <div>
+                                    <div style="float:left"><b>Order Total:</b></div>
+                                    <div style="float:right"><b><span id="MainContent_lblTotal">$@totalTTC</span></b></div>
+                                </div>
+                                <br><br>
+                                <button class="btn btn-primary btn-sm" title="Pay with Credit Card" type="submit" style="width:100%">
+                                    <i class="far fa-credit-card"></i> Proceed to checkout
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <br><br>
+            </div>
+        }
+
+    </div>
+</div>

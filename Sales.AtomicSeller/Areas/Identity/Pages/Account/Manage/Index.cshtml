@@ -1,0 +1,74 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+    string[] Countries = (string[])ViewData["Countries"];
+}
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-floating mb-2">
+                <input asp-for="Username" class="form-control" disabled />
+                <label asp-for="Username" class="form-label"></label>
+            </div>
+             <div class="form-floating mb-3">
+                <input asp-for="Input.FirstName" class="form-control" required />
+                <label asp-for="Input.FirstName" class="form-label"></label>
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.LastName" class="form-control" required />
+                <label asp-for="Input.LastName" class="form-label"></label>
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Company" class="form-control" />
+                <label asp-for="Input.Company" class="form-label"></label>
+                <span asp-validation-for="Input.Company" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.StreetAddress1" class="form-control" required />
+                <label asp-for="Input.StreetAddress1" class="form-label"></label>
+                <span asp-validation-for="Input.StreetAddress1" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.StreetAddress2" class="form-control" />
+                <label asp-for="Input.StreetAddress2" class="form-label"></label>
+                <span asp-validation-for="Input.StreetAddress2" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.PostCodeZip" class="form-control" required />
+                <label asp-for="Input.PostCodeZip" class="form-label"></label>
+                <span asp-validation-for="Input.PostCodeZip" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.City" class="form-control" required />
+                <label asp-for="Input.City" class="form-label"></label>
+                <span asp-validation-for="Input.City" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Input.Country" asp-items="@(new SelectList(Countries))" class="form-select" required>
+                    <option></option>
+                </select>
+                <label asp-for="Input.Country" class="form-label"></label>
+                <span asp-validation-for="Input.Country" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.PhoneNumber" class="form-control" />
+                <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

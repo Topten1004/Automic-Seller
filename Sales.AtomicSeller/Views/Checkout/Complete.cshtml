@@ -1,0 +1,137 @@
+﻿@model PaymentCompleteViewModel
+@inject IRootConfig rootConfig
+@{
+    ViewData["Title"] = "Shopping Cart Checkout";
+}
+<style>
+    .detailleft {
+        text-align: left;
+        padding: 10px;
+    }
+
+    .detailcenter {
+        text-align: center;
+        padding: 10px;
+    }
+
+    .detailright {
+        text-align: right;
+        padding: 10px;
+    }
+
+    .gridorder {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .headerorder {
+        background-color: whitesmoke;
+        border-top: 1px solid gainsboro;
+        padding: 20px;
+    }
+
+    .orderitem {
+        padding: 10px;
+        border-top: 1px solid gainsboro;
+    }
+
+    .footeritem {
+        padding: 10px;
+    }
+</style>
+<br />
+
+<div class="container">
+    @if (!Model.SuccessufulPayment)
+    {
+        <div class="text-center">
+            <div style="color:red;font-size:100px;line-height:100px;"><i class="fas fa-exclamation-triangle"></i></div>
+            <div style="color:red;font-size:40px;">
+                @if (Model.Message.Contains("Your Payment is Successfull"))
+                {
+                    <span>Error Occured</span>
+                }
+                else
+                {
+                    <span>Checkout Error</span>
+                }
+            </div>
+            <br />
+            <div class="text-center" style="color:black">
+                @Model.Message
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="text-center" style="color:green;font-size:80px;line-height:100px;"><i class="fas fa-check-circle"></i></div>
+        <div class="text-center" style="color:green;font-size:20px;">Thank you for shopping with us. Your account has been charged and your transaction is successful.</div>
+        <br />
+        <div class="row p-2">
+            <div class="col bg-light text-center" style="padding:5px">
+                <div id="left">Order Id: @Model.Order?.Number</div>
+            </div>
+            <div class="col bg-light text-center mx-2" style="padding:5px;">
+                <div id="middle">Order Date: @Model.Order?.CreatedOn</div>
+            </div>
+            <div class="col bg-light text-center" style="padding:5px;">
+                <div id="right">Payment Id: @Model.Order?.PaymentTransactionId</div>
+            </div>
+        </div>
+        <div class="card">
+            <h5 class="card-header"><b>Order Details</b></h5>
+
+
+            <br />
+            <div class="row">
+                <div class="col-md-8">
+                    <table class="table table-borderless gridmax" cellspacing="0" cellpadding="4" rules="all" border="0" id="MainContent_CartList" style="border-collapse:collapse;">
+                        <tbody>
+                            @foreach (var item in Model.Cart.CartItems)
+                            {
+                                <tr style="border-bottom-width: 1px;border-bottom-color: lightgrey;">
+                                    <td width="50px" class="align-middle">
+                                        <img width="30" src="~/images/favicon-32x32.png" asp-append-version="true" class="img-fluid" />
+                                    </td>
+                                    <td class="text-left">
+                                        @item.AtomicService.ServiceName
+                                        <br>
+                                        <span class="fs-6 blue"> $@(Math.Round(item.AtomicService.UnitPriceExclTax,2))</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-md-4 orderbox text-center" style="padding-right:25px;">
+
+                    @{
+                        decimal tax = Math.Round((Model.Cart.Total * rootConfig.InvoiceConfig.TaxRate) / 100, 2);
+                        decimal totalTTC = Math.Round(Model.Cart.Total + tax, 2);
+                    }
+                    <div>
+                        <div style="float:left">Total:</div>
+                        <div style="float:right"><b><span id="MainContent_lblTotal">$@totalTTC</span></b></div>
+                    </div>
+                    <br><br>
+                    <div>
+                        <div style="float:left">Payment method:</div>
+                        <div style="float:right"><b>Card Payment</b></div>
+                    </div>
+                    <br><br>
+                    <button onclick="window.location.href='/Identity/Account/Manage/Orders?id=@(Model?.Order?.Id)&handler=DownloadInvoice'" class="btn btn-outline-success btn-sm" title="Download Invoice" style="width:100%">
+                        <i class="fas fa-file-invoice"></i> Download Invoice
+                    </button>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+        <br />
+        <p class="text-center">You will receive an email confirmation shortly at: @User.Identity.Name</p>
+    }
+    <div class="text-center">
+        <a href="../" style="text-decoration:underline">Get Back To Our Homepage</a>
+    </div>
+</div>
+<br />

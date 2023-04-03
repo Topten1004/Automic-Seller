@@ -1,0 +1,23 @@
+﻿@model Cart
+@inject IRootConfig rootConfig
+@{
+     ViewData["Title"] = "Checkout";
+}
+
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+    var stripe = Stripe('@rootConfig.StripeConfig.PublishableKey');
+    stripe.redirectToCheckout({sessionId: '@ViewBag.StripeId',
+    }).then(function (result) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer
+        // using `result.error.message`.
+    });
+</script>
+<br /><br /><center>
+    <div style="color:black;font-size:100px;line-height:100px;"><i class="fas fa-hourglass-half"></i></div>
+    <br />
+    We use <a href="https://www.stripe.com" target="_blank">Stripe</a> to process payments. We don't handle or store any sensitive credit card data on our servers.
+    <br /><br />
+    Redirecting to Stripe. Please wait...Click <a href="https://www.stripe.com" target="_blank" runat="server" id="stripeLink">here</a> is you are not redirected in 10 seconds...
+    </center><br /><br />

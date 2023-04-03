@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AtomicService>
+@{
+    ViewData["Title"] = "Store";
+}
+
+<div class="row">
+    @functions{
+        public string GetClassFromServiceType(int val)
+        {
+            return val == 2 ? "recommanded-product-card" : "product-card";
+        }
+    }
+
+    @{
+        var cnt = 0;
+    }
+    @foreach (var AtomicService in Model)
+    {
+        @if (AtomicService.ServiceType == "PLAN")
+        {
+            cnt++;
+            <div class="col-md-3 col-6 mb-5">
+                <div class="card h-100 @GetClassFromServiceType(cnt)">
+                    <!-- Sale badge
+                    <div class="badge text-white position-absolute" style="top: 0.5rem; right: 0.5rem; background-color: #ad2322;">Sale</div>-->
+                    <!-- Product image-->
+                    @*<img style="border-top-left-radius: 15px; border-top-right-radius: 15px;" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="...">*@
+                    <center>
+                        <img class="service-img mt-5 mb-3" src="~/images/LogoAtomicV3.jpg" alt="..." />
+                    </center>
+                    <!-- Product details-->
+                    <div class="card-body p-4" style="min-height: 240px;">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder mb-4" style="color: #416ba0">@AtomicService.ServiceName</h5>
+                            <!-- Product reviews-->
+                            <div class="d-flex justify-content-center small text-warning mb-2">
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                            </div>
+                            <!-- Product price-->
+                            @*<span class="text-muted text-decoration-line-through">$@(AtomicService.UnitPriceExclTax + 30)</span>*@
+                            <p class="mb-2">Billed Monthly : $@AtomicService.MonthUnitPriceExclTax</p>
+                            <p class="mb-2">Billed Annually : $@AtomicService.AnnualUnitPriceExclTax</p>
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <form asp-action="Details" asp-controller="Home" asp-route-id="@AtomicService.Id" method="post">
+                            <div class="text-center"><button class="btn btn-cart mt-auto" type="submit">Select</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

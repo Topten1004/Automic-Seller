@@ -1,0 +1,25 @@
+﻿@model AtomicService
+@{
+}
+<tr id="product-@Model.Id" class="row-product">
+    <td class="p-0 pb-1 d-table-cell d-sm-none d-md-none d-lg-none">
+        <blockquote class="quote-secondary m-0">
+            <strong>@Model.ServiceName</strong>
+            <p>
+                <i class="fas fa-info-circle"></i> @Model.ServiceDescription
+            </p>
+        </blockquote>
+    </td>
+    <td class="d-none d-sm-table-cell"><strong>@Model.ServiceName</strong></td>
+    <td class="d-none d-sm-table-cell">@Model.ServiceDescription</td>
+    <td>
+        <div class="text-end" style="min-width:70px;">
+            <a href="#" class="btn btn-sm btn-outline-primary edit-product" data-id="@Model.Id">
+                <i class="fas fa-edit"></i>
+            </a>
+            <a href="#" class="btn btn-sm btn-outline-danger delete-product" data-id="@Model.Id" data-name="@Model.ServiceName">
+                <i class="fas fa-trash"></i>
+            </a>
+        </div>
+    </td>
+</tr>

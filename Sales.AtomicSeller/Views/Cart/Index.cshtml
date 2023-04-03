@@ -1,0 +1,24 @@
+﻿@model Cart
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+@section Styles{
+    <style>
+        .orderbox {
+            background-color: whitesmoke;
+            border: 1px solid #dddddd;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+}
+    <div class="container-full cart-page" style="background-color:white;color:black;">
+        <br />
+        @await Html.PartialAsync("_Loader", "cart-loader")
+        <div id="cart-zone">
+            @await Html.PartialAsync("_Cart", Model)
+        </div>
+    </div>
+    @section Scripts{
+    <script src="~/js/pages/cart.js"></script>
+}

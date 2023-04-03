@@ -1,0 +1,33 @@
+﻿@model ModalEditViewModel
+<div class="modal fade kc-modal-edit" id="@Model.Id" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            @await Html.PartialAsync("_Loader", Model.LoaderId)
+            <div class="modal-header">
+                <h4 class="modal-title">@Model.Title</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <form id="edit-modal-form-@Model.Id" 
+                  enctype="multipart/form-data"
+                  class="form-horizontal"
+                  asp-action="@Model.FormAction"
+                  asp-controller="@Model.FormController"
+                  data-ajax-method="Post"
+                  data-ajax-success="@Model.FormDataAjaxSuccess"
+                  data-ajax-failure="@Model.FormDataAjaxFailure"
+                  data-ajax-loading="#@Model.LoaderId"
+                  data-ajax="true">
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><i class="fa fa-arrow-left"></i> Back</button>
+                    <button type="submit"  class="btn btn-success"><i class="far fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

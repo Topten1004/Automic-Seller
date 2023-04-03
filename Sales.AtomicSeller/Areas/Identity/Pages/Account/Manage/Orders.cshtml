@@ -1,0 +1,71 @@
+﻿@page
+@model OrderModel
+@{
+    ViewData["Title"] = "Orders";
+    ViewData["ActivePage"] = ManageNavPages.Orders;
+}
+
+<h3>@ViewData["Title"]</h3>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th class="d-table-cell d-sm-none d-md-none d-lg-none">Order</th>
+                    <th class="d-none d-sm-table-cell">Order</th>
+                    <th class="d-none d-sm-table-cell">Date</th>
+                    <th class="d-none d-sm-table-cell">Total</th>
+                    <th class="d-none d-sm-table-cell">Products</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="order-list">
+                @if (Model.Orders.Count == 0)
+                {
+                    <tr>
+                        <td colspan="5">
+                            <div class="alert alert-info text-center">
+                                <b>No Order Found</b><br>
+                                Looks like you haven't made any orders yet
+                            </div>
+                        </td>
+                    </tr>
+                }
+                @foreach (var item in Model.Orders)
+                {
+                    <tr id="order-@item.Id" class="row-order">
+                        <td class="p-0 pb-1 d-table-cell d-sm-none d-md-none d-lg-none">
+                            <blockquote class="quote-secondary m-0">
+                                <strong>@item.Number</strong>
+                                <p>
+                                    <div class="text-end" style="min-width:70px;">
+                                        <a href="@Url.Page("Orders", "DownloadInvoice", new { id = @item.Id })" class="btn btn-sm btn-outline-primary"><i class="fas fa-download"></i> Invoice</a>
+                                    </div>
+                                </p>
+                            </blockquote>
+                        </td>
+                        <td class="d-none d-sm-table-cell"><strong>@item.Number</strong></td>
+                        <td class="d-none d-sm-table-cell"><strong>@item.CreatedOn.ToString("MMM dd, yyyy HH:mm")</strong></td>
+                        <td class="d-none d-sm-table-cell"><strong>@(item.Currency=="EUR"?"€":"$")@item.Total</strong></td>
+                        <td class="d-none d-sm-table-cell">
+                            @foreach (var product in item.OrderDetails)
+                            {
+                                <span class="badge bg-primary">@product.Quantity</span> @(product.Product.ServiceName)
+                                <br />
+                            }
+                        </td>
+                        <td>
+                            <div class="text-end" style="min-width:70px;">
+                                <a href="@Url.Page("Orders", "DownloadInvoice", new { id = @item.Id })" class="btn btn-sm btn-outline-primary"><i class="fas fa-download"></i> Invoice</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
